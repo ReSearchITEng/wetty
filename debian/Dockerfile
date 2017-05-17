@@ -16,7 +16,7 @@ PORT=${PORT:-3000}\n\
 HOST=${HOST:-wetty}\n\
 adduser --home /home/$USR --shell /bin/bash $USR --gecos "" --disabled-password \n\
 echo $USR:${PASS:-$USR} | chpasswd\n\
-echo $USR ALL=(ALL:ALL) ALL >> /etc/sudoers\n\
+[[ -n $SUDO ]] && echo $USR ALL=(ALL:ALL) ALL >> /etc/sudoers\n\
 cd /wetty \n\
 exec node app.js -p 3000 --sshhost $HOST --sshport $PORT --sshuser $USR\n'\
 >/entrypoint.sh

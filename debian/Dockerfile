@@ -8,7 +8,7 @@ RUN cd / \
     && npm install
 
 RUN apt-get update \
-    && apt-get install sudo vim nethogs procps htop
+    && apt-get install -y sudo vim nethogs procps htop
 
 RUN echo '#!/bin/sh\n\
 USR=${USR:-wetty} \n\
